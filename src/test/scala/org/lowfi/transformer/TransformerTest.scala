@@ -10,19 +10,19 @@ class TransformerTest extends AnyWordSpec with Matchers {
   "Transformer" should {
     "split and divide CSV" in {
       val input =
-        """|one,two,three
+        """|ID,"Groups Included",Total
            |1,"A,B",100
            |2,A,50
            |3,"B,C",100""".stripMargin
       val reader = new BufferedReader(new StringReader(input))
       val writer = new StringWriter()
       val transformations = Map(
-        HeaderName("two") -> TransformationType.Split,
-        HeaderName("three") -> TransformationType.Divide
+        HeaderName("Groups Included") -> TransformationType.Split,
+        HeaderName("Total") -> TransformationType.Divide
       )
       Transformer.transform(reader, writer, transformations)
       writer.toString shouldBe
-        """"one","two","three"
+        """"ID","Groups Included","Total"
           |"1","A","50"
           |"1","B","50"
           |"2","A","50"
