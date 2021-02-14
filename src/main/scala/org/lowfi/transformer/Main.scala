@@ -56,9 +56,8 @@ object Main extends LazyLogging {
     }
   }
 
-  private def printUsageAndExit(): Nothing = {
+  private def printUsageAndExit(): Unit = {
     System.err.println("Usage: bin/transformer -Dconfig.file=<config-file> <input-file> <output-file>")
     System.exit(1)
-    throw new RuntimeException()
   }
 }
