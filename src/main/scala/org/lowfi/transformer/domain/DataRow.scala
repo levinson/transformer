@@ -10,7 +10,7 @@ object DataRow {
                     transformations: Map[HeaderName, TransformationType]): DataRow = {
     val values: Seq[Value] = rawHeaders.zip(rawValues).map {
       case (headerName, headerValue) =>
-        val valueType = transformations.get(HeaderName(headerName)) match {
+        transformations.get(HeaderName(headerName)) match {
           case None => Value.Plain(headerValue)
           case Some(transformationType) =>
             transformationType match {
@@ -18,7 +18,6 @@ object DataRow {
               case TransformationType.Divide => Value.Divide(BigDecimal(headerValue))
             }
         }
-        valueType
     }
     DataRow(values)
   }

@@ -17,8 +17,8 @@ object Transformer {
     while (rawValues != null) {
       val initialRow = DataRow.fromRawValues(rawHeaders, rawValues, transformations)
       val outputRows = initialRow.values.zipWithIndex.foldLeft(Seq(initialRow)) {
-        case (rows, (valueType, index)) =>
-          valueType match {
+        case (rows, (value, index)) =>
+          value match {
             case _: Value.Plain      => rows // no transformation
             case _: Value.Divide     => rows // applied in split value
             case Value.Split(values) =>
@@ -29,15 +29,14 @@ object Transformer {
                 }
               }
 
-              val dividedRows = splitRows.map { row =>
+              // Apply divisions to split rows
+              splitRows.map { row =>
                 val updatedValues = row.values.map {
                   case Value.Divide(value) => Value.Divide(value / values.length)
                   case other               => other
                 }
                 DataRow(updatedValues)
               }
-
-              dividedRows
           }
       }
 
