@@ -11,7 +11,7 @@ The following tools are required to build & package the application:
 
 Once the tools are installed, follow these steps to build and package:
 1. Download this source code repository (either using 'git clone' or download as a zip file and extract the archive).
-2. Switch the transformer dirctory and build, test and stage the application:
+2. Switch to the transformer directory and build, test and stage the application:
 ```
 $ cd transformer
 $ sbt clean test stage
@@ -44,7 +44,8 @@ See the program usage information printed to the console:
 Usage: bin/transformer -Dconfig.file=<config-file> <input-file> <output-file>
 ```
 
-Run the program again, specifying all the required arguments:
+Run the program again, specifying all the required arguments.
+Note that the first line in the CSV file must contain the column headers.
 ```
 $ bin/transformer -Dconfig.file=sample.conf sample.csv sample-transformed.csv
 ```
