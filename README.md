@@ -22,8 +22,8 @@ See the following example configuration:
 ```
 org.lowfi.transformer {
   transformations {
-    two = "split"
-    three = "divide"
+    "Groups Included" = Split
+    Total = Divide
   }
 }
 ```
