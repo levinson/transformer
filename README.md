@@ -29,8 +29,8 @@ org.lowfi.transformer {
 ```
 The transformations object contains a map of header names to transformation types.
 The following transformation types are supported:
-* "split" - split a row into multiple rows, one for each comma-separated value within the cell.
-* "divide" - when splitting a row, divide this cell's numeric values by number of rows in the split.
+* Split - split a row into multiple rows, one for each comma-separated value within the cell.
+* Divide - when splitting a row, divide this cell's numeric values by number of rows in the split.
 
 # Usage
 After the build completes switch to stage directory and run the launcher script:
@@ -45,7 +45,7 @@ Usage: bin/transformer -Dconfig.file=<config-file> <input-file> <output-file>
 ```
 
 Run the program again, specifying all the required arguments.
-Note that the first line in the CSV file must contain the column headers.
+Note that the first line in the input CSV file must contain the column headers.
 ```
 $ bin/transformer -Dconfig.file=sample.conf sample.csv sample-transformed.csv
 ```
