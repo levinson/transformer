@@ -2,6 +2,8 @@ name := "transformer"
 
 version := "0.1"
 
+organization := "org.lowfi"
+
 scalaVersion := "2.13.4"
 
 libraryDependencies ++= Seq(
