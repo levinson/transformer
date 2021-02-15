@@ -10,7 +10,7 @@ class TransformerTest extends AnyWordSpec with Matchers {
   "Transformer" should {
     "split and divide CSV" in {
       val input =
-        """|ID,"Groups Included",Total
+        """|ID,Groups Included,Total
            |1,"A,B",100
            |2,A,50
            |3,"B,C",100""".stripMargin

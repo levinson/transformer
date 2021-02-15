@@ -5,8 +5,8 @@ case class DataRow(values: Seq[Value]) {
 }
 
 object DataRow {
-  def fromRawValues(rawHeaders: Array[String],
-                    rawValues: Array[String],
+  def fromRawValues(rawHeaders: Seq[String],
+                    rawValues: Seq[String],
                     transformations: Map[HeaderName, TransformationType]): DataRow = {
     val values: Seq[Value] = rawHeaders.zip(rawValues).map {
       case (headerName, headerValue) =>

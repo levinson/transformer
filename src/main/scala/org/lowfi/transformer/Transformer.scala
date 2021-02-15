@@ -1,17 +1,24 @@
 package org.lowfi.transformer
 
 import com.opencsv.{CSVReader, CSVWriter}
+import com.typesafe.scalalogging.LazyLogging
 import org.lowfi.transformer.domain._
 
 import java.io.{Reader, Writer}
 
-object Transformer {
+object Transformer extends LazyLogging {
   def transform(reader: Reader, writer: Writer, transformations: Map[HeaderName, TransformationType]): Unit = {
     val csvReader = new CSVReader(reader)
     val csvWriter = new CSVWriter(writer)
 
-    val rawHeaders: Array[String] = csvReader.readNextSilently().map(_.trim())
+    val rawHeaders: Array[String] = csvReader.readNextSilently()
     csvWriter.writeNext(rawHeaders) // write out header
+
+    transformations.keys.foreach { headerName =>
+      if (!rawHeaders.contains(headerName.value)) {
+        logger.warn(s"Transformation defined for '$headerName' but column does not exist.")
+      }
+    }
 
     var rawValues: Array[String] = csvReader.readNext()
     while (rawValues != null) {
