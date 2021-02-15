@@ -6,8 +6,8 @@ This app was written for my step-mom to help with some data-crunching.
 In order to run this application you must first build and package it from the source code.
 
 The following tools are required to build & package the application:
-* SBT: https://www.scala-sbt.org/download.html
 * JDK8+: https://www.oracle.com/bh/java/technologies/javase/javase-jdk8-downloads.html
+* SBT: https://www.scala-sbt.org/download.html
 
 Once the tools are installed, follow these steps to build and package:
 1. Download this source code repository (either using 'git clone' or download as a zip file and extract the archive).
